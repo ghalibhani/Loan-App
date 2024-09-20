@@ -4,11 +4,14 @@ import com.enigmacamp.loan_app.dto.request.CustomerRequest;
 import com.enigmacamp.loan_app.dto.request.UpdateCustomerRequest;
 import com.enigmacamp.loan_app.dto.response.CommonResponse;
 import com.enigmacamp.loan_app.dto.response.CustomerResponse;
+import com.enigmacamp.loan_app.entity.Customer;
 import com.enigmacamp.loan_app.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/customers")
@@ -24,7 +27,9 @@ public class CustomerController {
                 .statusCode(HttpStatus.CREATED.value())
                 .data(customerResponse)
                 .build();
-        return ResponseEntity.status(HttpStatus.CREATED).body(commonResponse);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(commonResponse);
     }
 
     @GetMapping("/{id}")
@@ -40,7 +45,13 @@ public class CustomerController {
 
     @GetMapping
     public ResponseEntity<?> getAllCustomer() {
-        return ResponseEntity.ok(customerService.getAllCustomer());
+        List<Customer> customerList = customerService.getAllCustomer();
+        CommonResponse<List<Customer>> commonResponse = CommonResponse.<List<Customer>>builder()
+                .message("Successfully get all customer")
+                .statusCode(HttpStatus.OK.value())
+                .data(customerList)
+                .build();
+        return ResponseEntity.status(HttpStatus.OK).body(commonResponse);
     }
 
     @PutMapping
