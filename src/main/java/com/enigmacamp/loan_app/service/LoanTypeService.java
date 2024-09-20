@@ -10,6 +10,7 @@ import java.util.List;
 public interface LoanTypeService {
     LoanTypeResponse createLoanType(LoanTypeRequest request);
     LoanTypeResponse getLoanTypeById(String id);
+    LoanType getById(String id);
     List<LoanType> getAllLoanType();
     LoanTypeResponse updateLoanType(UpdateLoanTypeRequest request);
     void deleteLoanType(String id);

@@ -10,6 +10,7 @@ import java.util.List;
 public interface InstalmentTypeService {
     InstalmentTypeResponse createInstalmentType(InstalmentTypeRequest request);
     InstalmentTypeResponse getInstalmentTypeById(String id);
+    InstalmentType getById(String id);
     InstalmentTypeResponse updateInstalmentType(UpdateInstalmentTypeRequest request);
     List<InstalmentType> getAllInstalmentType();
     void deleteInstalmentTypeById(String id);

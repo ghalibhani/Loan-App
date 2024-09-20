@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -50,7 +51,7 @@ public class LoanTransaction {
     private List<LoanTransactionDetail> loanTransactionDetails;
 
     @Column(name = "created_at")
-    private Long createdAt;
+    private LocalDateTime createdAt;
 
     @Column(name = "updated_at")
     private Long updatedAt;

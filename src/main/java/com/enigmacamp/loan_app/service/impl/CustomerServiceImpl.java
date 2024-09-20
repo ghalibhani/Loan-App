@@ -47,6 +47,11 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public Customer getById(String id) {
+        return findByIdOrThrowNotFound(id);
+    }
+
+    @Override
     public List<Customer> getAllCustomer() {
         return customerRepository.findAll();
     }

@@ -41,6 +41,11 @@ public class LoanTypeServiceImpl implements LoanTypeService {
     }
 
     @Override
+    public LoanType getById(String id) {
+        return findByIdOrThrowNotFound(id);
+    }
+
+    @Override
     public List<LoanType> getAllLoanType() {
         return loanTypeRepository.findAll();
     }

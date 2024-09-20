@@ -59,7 +59,11 @@ public class InstalmentTypeServiceImpl implements InstalmentTypeService {
     public void deleteInstalmentTypeById(String id) {
         InstalmentType instalmentType = findByIdOrThrowNotFound(id);
         instalmentTypeRepository.delete(instalmentType);
+    }
 
+    @Override
+    public InstalmentType getById(String id) {
+        return findByIdOrThrowNotFound(id);
     }
 
     private InstalmentType findByIdOrThrowNotFound(String id){
