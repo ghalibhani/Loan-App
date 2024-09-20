@@ -10,10 +10,12 @@ import lombok.NoArgsConstructor;
 import java.sql.Date;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-public class CustomerRequest {
+public class UpdateCustomerRequest {
+
+    private String id;
     @NotBlank(message = "Name cannot be blank")
     private String firstName;
 
