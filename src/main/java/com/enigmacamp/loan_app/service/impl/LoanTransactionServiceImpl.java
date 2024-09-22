@@ -36,7 +36,7 @@ public class LoanTransactionServiceImpl implements LoanTransactionService {
                 .customer(customer)
                 .loanType(loanType)
                 .instalmentType(instalmentType)
-                .createdAt(LocalDateTime.now())
+                .createdAt(System.currentTimeMillis())
                 .nominal(request.getNominal())
                 .approvedAt(System.currentTimeMillis())
                 .approvalStatus(ApprovalStatus.APPROVED)
@@ -45,21 +45,32 @@ public class LoanTransactionServiceImpl implements LoanTransactionService {
                 .build();
         loanTransactionRepository.saveAndFlush(loanTransaction);
 
+//        List<LoanTransactionDetail> loanTransactionDetailList = new ArrayList<>();
+//        for (LoanTransactionDetail loanTransactionDetail : loanTransaction.getLoanTransactionDetails()){
+//            LoanTransactionDetail loanTransactionDetail1 = LoanTransactionDetail.builder()
+//                    .loanStatus(LoanStatus.PAID)
+//                    .transactionDate(System.currentTimeMillis())
+//                    .loanTransaction(loanTransaction)
+//                    .createdAt(System.currentTimeMillis())
+//                    .updatedAt(System.currentTimeMillis())
+//                    .build();
+//            loanTransactionDetailList.add(loanTransactionDetail1);
+//        }
+//
+//        loanTransactionDetailService.createLoanTransactionDetail(loanTransactionDetailList);
+//        loanTransaction.setLoanTransactionDetails(loanTransactionDetailList);
+
         List<LoanTransactionDetail> loanTransactionDetailList = new ArrayList<>();
-        for (LoanTransactionDetail loanTransactionDetail : loanTransaction.getLoanTransactionDetails()){
             LoanTransactionDetail loanTransactionDetail1 = LoanTransactionDetail.builder()
-                    .loanStatus(LoanStatus.PAID)
-                    .transactionDate(LocalDateTime.now())
-                    .loanTransaction(loanTransaction)
                     .loanStatus(LoanStatus.UNPAID)
-                    .createdAt(LocalDateTime.now())
+                    .transactionDate(System.currentTimeMillis())
+                    .loanTransaction(loanTransaction)
+                    .createdAt(System.currentTimeMillis())
                     .updatedAt(System.currentTimeMillis())
                     .build();
             loanTransactionDetailList.add(loanTransactionDetail1);
-        }
-
-        loanTransactionDetailService.createLoanTransactionDetail(loanTransactionDetailList);
         loanTransaction.setLoanTransactionDetails(loanTransactionDetailList);
+        loanTransactionRepository.saveAndFlush(loanTransaction);
 
         List<LoanTransactionDetailResponse> loanTransactionDetailResponseList = loanTransaction.getLoanTransactionDetails().stream().map(LoanTransactionDetail -> {
             return LoanTransactionDetailResponse.builder()

@@ -23,7 +23,7 @@ public class LoanTransactionDetail {
     private String id;
 
     @Column(name = "transaction_date")
-    private LocalDateTime transactionDate;
+    private Long transactionDate;
 
     @Column
     private Double nominal;
@@ -37,7 +37,7 @@ public class LoanTransactionDetail {
     private LoanStatus loanStatus; // enum
 
     @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    private Long createdAt;
 
     @Column(name = "updated_at")
     private Long updatedAt;

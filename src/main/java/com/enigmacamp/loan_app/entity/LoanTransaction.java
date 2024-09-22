@@ -51,7 +51,7 @@ public class LoanTransaction {
     private List<LoanTransactionDetail> loanTransactionDetails;
 
     @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    private Long createdAt;
 
     @Column(name = "updated_at")
     private Long updatedAt;

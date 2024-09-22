@@ -14,9 +14,9 @@ import java.time.LocalDateTime;
 @Builder
 public class LoanTransactionDetailResponse {
     private String id;
-    private LocalDateTime transactionDate;
+    private Long transactionDate;
     private Double nominal;
     private LoanStatus loanStatus;
-    private LocalDateTime createdAt;
+    private Long createdAt;
     private Long updatedAt;
 }

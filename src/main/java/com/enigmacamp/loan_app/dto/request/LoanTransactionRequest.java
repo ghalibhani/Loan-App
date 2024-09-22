@@ -18,5 +18,4 @@ public class LoanTransactionRequest {
     private String instalmentTypeId;
     private String customerId;
     private Double nominal;
-    private List<LoanTransactionDetail> loanTransactionDetails;
 }
